@@ -43,8 +43,7 @@ while num_iter <= max_it && deltol > tol
 
     % update means
     mu_t = data' * gamma;
-    %temp2 = ones(d, 1) .* p;    % (still fine, even if unused)
-    % Nk = sum(gamma,1); % 1×K
+    
     mu_p = mu_t ./ sum(gamma, 1);
     epsilon = 1e-6;
     % update the means and the variances
@@ -64,4 +63,5 @@ while num_iter <= max_it && deltol > tol
     mu_mat = mu_p;
     var_mat = var;
 end
+
 
