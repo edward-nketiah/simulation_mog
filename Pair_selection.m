@@ -1,6 +1,6 @@
 clear
 clc
-% Generate artificial data
+% Generate synthetic data
 tic
 dbstop if error
 S = [20,20];
@@ -81,41 +81,6 @@ k1_AIC = (idx_AIC > 3) + (idx_AIC > 6) + (idx_AIC > 9) + (idx_AIC > 12) + (idx_A
 k2_AIC = mod(idx_AIC-1, 3);
 fprintf('Best AIC: k1+1=%d k2+1=%d\n', k1_AIC+1, k2_AIC+1);
 
-%mu_bj = @(x, mu, var) ...
-   %(1 ./ sqrt(2*pi*var)) .* exp(-0.5 * (x - mu).^2 ./ var);
-% Precompute shapes
-%p = p_b(:);                    % K×1
-%mu = mu_b(1,:)';               % K×1
-% sigma2 = squeeze(var_b(1,1,:));% K×1
-% sigma2y = squeeze(var_b(2,2,:));
-% 
-% sigma3 = squeeze(var_o(1,1,:));
-% sigma3y = squeeze(var_o(2,2,:));
-% sigma3t = squeeze(var_o(3,3,:));
-% % Anonymous for scalar x
-% mu1_x = @(X) arrayfun(@(x) ...
-%   sum( p_b(:) .* (1 ./ sqrt(2*pi*sigma2)) .* ...
-%       exp(-0.5 * (x - mu_b(1,:)').^2 ./ sigma2) ), X);
-% 
-% mu2_y = @(X) arrayfun(@(x) ...
-%   sum( p_b(:) .* (1 ./ sqrt(2*pi*sigma2y)) .* ...
-%       exp(-0.5 * (x - mu_b(2,:)').^2 ./ sigma2y) ), X);
-% 
-% 
-% g1_x = @(X) arrayfun(@(x) ...
-%   sum( p_o(:) .* (1 ./ sqrt(2*pi*sigma3)) .* ...
-%       exp(-0.5 * (x - mu_o(1,:)').^2 ./ sigma3) ), X);
-% 
-% g2_y = @(X) arrayfun(@(x) ...
-%   sum( p_o(:) .* (1 ./ sqrt(2*pi*sigma3y)) .* ...
-%       exp(-0.5 * (x - mu_o(2,:)').^2 ./ sigma3y) ), X);
-% 
-% g3_t = @(X) arrayfun(@(x) ...
-%   sum( p_o(:) .* (1 ./ sqrt(2*pi*sigma3t)) .* ...
-%       exp(-0.5 * (x - mu_o(3,:)').^2 ./ sigma3t) ), X);
-% 
-
-
 % for background
 x = -5:0.1:25;
 y = -5:0.1:25;
@@ -172,3 +137,4 @@ plot(t2, mu_ot,'r')
 title('g(t)')
 % hold on
 % plot(t2, g3_t(t2), 'bo')
+
